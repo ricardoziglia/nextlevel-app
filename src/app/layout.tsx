@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import './globals.css';
+import MainHeader from '@/app/_components/header/main-header';
 
 export const metadata: Metadata = {
   title: 'To-Do Next App',
@@ -15,26 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen">
-        <div
-          role="navigation"
-          className="w-full flex items-center justify-between py-4 px-8 sm:px-12 bg-background dark:bg-foreground"
-        >
-          <div className="flex text-stone-600 gap-2">
-            <Image
-              aria-hidden
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
-            <h1>A To-Do List app with Next.js</h1>
-          </div>
-          <ul className="flex text-stone-600 gap-4">
-            <li>Home</li>
-            <li>To-Dos</li>
-            <li>My Account</li>
-          </ul>
-        </div>
+        <MainHeader />
         {children}
       </body>
     </html>
