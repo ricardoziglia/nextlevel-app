@@ -24,6 +24,7 @@ export const todos = pgTable('todos', {
   id: serial('id').primaryKey(),
   title: varchar({ length: 255 }).notNull(),
   userId: integer('user_id').notNull(),
+  description: text('description').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });
 
