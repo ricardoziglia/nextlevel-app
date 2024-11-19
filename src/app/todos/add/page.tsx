@@ -1,16 +1,14 @@
 'use client';
 
-import { useFormStatus } from 'react-dom';
 import { useActionState } from 'react';
-import Link from 'next/link';
 
 import { createTodo } from '@/app/todos/actions';
 import Input from '@/components/UI/Input';
-import Button from '@/components/UI/Button';
+import ToDoSaveButton from './to-do-save-button';
+import ToDoCancelLink from './to-do-cancel-link';
 
 export default function Page() {
   const [state, formAction] = useActionState(createTodo, { message: '' });
-  const { pending } = useFormStatus();
 
   return (
     <div className="w-[35rem] mt-16">
@@ -20,12 +18,10 @@ export default function Page() {
       <form action={formAction}>
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <Link className="text-stone-500 hover:text-stone-300" href="/todos">
-              Cancel
-            </Link>
+            <ToDoCancelLink />
           </li>
           <li>
-            <Button>{pending ? 'Submitting...' : 'Save'}</Button>
+            <ToDoSaveButton />
           </li>
         </menu>
         <div>

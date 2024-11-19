@@ -1,6 +1,6 @@
 import 'server-only';
 import { db } from './db';
-import { users } from './db/schema';
+import { users, todos } from './db/schema';
 import { eq } from 'drizzle-orm';
 import { redirect } from 'next/navigation';
 
@@ -28,4 +28,12 @@ export async function deleteUser() {
 
 export async function insertUser() {
   return await db.insert(users).values(user);
+}
+
+export async function insertTodo(title: string, description: string) {
+  return await db.insert(todos).values({
+    title: title,
+    description: description,
+    userId: 3, //hardcoded for now
+  });
 }

@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
-import { insertUser } from '@/server/queries';
+import { insertTodo /*insertUser*/ } from '@/server/queries';
 
 function isInvalidText(text: FormDataEntryValue | null) {
   return !text || text.toString().trim() === '';
@@ -14,27 +14,18 @@ export async function createTodo(
   formData: FormData
 ) {
   const todo = {
-    title: formData.get('title'),
-    summary: formData.get('summary'),
-    instructions: formData.get('instructions'),
-    image: formData.get('image'),
-    creator: formData.get('name'),
-    creator_email: formData.get('email'),
+    title: formData.get('title') as string,
+    description: formData.get('description') as string,
   };
 
-  if (
-    isInvalidText(todo.title) ||
-    isInvalidText(todo.summary) ||
-    isInvalidText(todo.instructions) ||
-    isInvalidText(todo.creator) ||
-    isInvalidText(todo.creator_email)
-  ) {
+  if (isInvalidText(todo.title) || isInvalidText(todo.description)) {
     return {
       message: 'Invalid input.',
     };
   }
 
-  await insertUser();
+  //await insertUser();
+  await insertTodo(todo.title, todo.description);
   revalidatePath('/todos');
   redirect('/todos');
 }

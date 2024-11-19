@@ -23,7 +23,9 @@ export const usersRelations = relations(users, ({ many }) => ({
 export const todos = pgTable('todos', {
   id: serial('id').primaryKey(),
   title: varchar({ length: 255 }).notNull(),
-  userId: integer('user_id').notNull(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => users.id),
   description: text('description').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });
@@ -39,7 +41,9 @@ export const todosRelations = relations(todos, ({ one, many }) => ({
 export const tasks = pgTable('tasks', {
   id: serial('id').primaryKey(),
   text: text('text'),
-  todoId: integer('todo_id').notNull(),
+  todoId: integer('todo_id')
+    .notNull()
+    .references(() => todos.id),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });
 
