@@ -37,3 +37,13 @@ export async function insertTodo(title: string, description: string) {
     userId: 3, //hardcoded for now
   });
 }
+
+export async function getTodos() {
+  return await db.select().from(todos);
+}
+
+export async function getTodo(todoId: number) {
+  return await db.query.todos.findFirst({
+    where: (model, { eq }) => eq(model.id, todoId),
+  });
+}

@@ -4,8 +4,8 @@ import { useActionState } from 'react';
 
 import { createTodo } from '@/app/todos/actions';
 import Input from '@/components/UI/Input';
-import ToDoSaveButton from './to-do-save-button';
-import ToDoCancelLink from './to-do-cancel-link';
+import ToDoSaveButton from '../../_components/todo/to-do-save-button';
+import ToDoCancelLink from '../../_components/todo/to-do-cancel-link';
 
 export default function Page() {
   const [state, formAction] = useActionState(createTodo, { message: '' });

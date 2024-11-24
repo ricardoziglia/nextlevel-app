@@ -2,7 +2,7 @@ import todoImage from '@/assets/todo.png';
 import LinkButton from '@/components/UI/LinkButton';
 import Image from 'next/image.js';
 
-export default function Todos() {
+export default function TodosPage() {
   return (
     <div className="mt-24 text-center w-2/3">
       <Image
@@ -14,7 +14,7 @@ export default function Todos() {
         No To-Do list selected
       </h2>
       <p className="text-stone-400 mb-4">
-        Select a To-Do on the left or get started with a new one
+        Select a To-Do or get started with a new one
       </p>
       <p className="mt-8">
         <LinkButton href="/todos/add">+ Add To-Do</LinkButton>
