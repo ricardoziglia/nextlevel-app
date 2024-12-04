@@ -1,5 +1,5 @@
-//import Button from '@/components/UI/Button';
 import LinkButton from '@/components/UI/LinkButton';
+import ToDoSidebarLink from './to-do-sidebar-link';
 
 export default function ToDoSidebar({
   todos,
@@ -14,20 +14,11 @@ export default function ToDoSidebar({
       <div>
         <LinkButton href="/todos/add">+ Add To-Do</LinkButton>
       </div>
-      <ul className="mt-8">
+      <ul className="mt-8 ">
         {todos.map((todo) => {
-          const cssClasses =
-            'w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800';
-
-          // if (todo.id === selectedProjectId) {
-          //   cssClasses += ' bg-stone-800 text-stone-200';
-          // } else {
-          //   cssClasses += ' text-stone-400';
-          // }
-
           return (
             <li key={todo.id}>
-              <button className={cssClasses}>{todo.title}</button>
+              <ToDoSidebarLink todoId={todo.id}>{todo.title}</ToDoSidebarLink>
             </li>
           );
         })}
