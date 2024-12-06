@@ -7,9 +7,18 @@ export async function generateMetadata({
 }: {
   params: { todoId: string };
 }) {
-  const todo = await getTodo(Number(params.todoId));
+  const { todoId } = await params;
+  let todo;
+
+  try {
+    todo = await getTodo(Number(todoId));
+  } catch (e) {
+    console.log('Generate metadata', (e as Error).message);
+    notFound();
+  }
 
   if (!todo) {
+    console.log('Generate metadata not found');
     notFound();
   }
 
@@ -19,14 +28,23 @@ export async function generateMetadata({
   };
 }
 
-export default async function todoPage({
+export default async function TodoPage({
   params,
 }: {
   params: { todoId: string };
 }) {
-  const todo = await getTodo(Number(params.todoId));
+  const { todoId } = await params;
+  let todo;
+
+  try {
+    todo = await getTodo(Number(todoId));
+  } catch (e) {
+    console.log('ToDo Page', (e as Error).message);
+    notFound();
+  }
 
   if (!todo) {
+    console.log('ToDo page not found');
     notFound();
   }
 
