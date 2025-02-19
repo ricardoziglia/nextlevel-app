@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import { getTodo } from '@/server/queries';
+import ToDoForm from '@/app/_components/todo/to-do-form';
 
 export async function generateMetadata({
   params,
@@ -48,5 +49,5 @@ export default async function TodoPage({
     notFound();
   }
 
-  return <div>{todo.title}</div>;
+  return <ToDoForm todo={todo} />;
 }

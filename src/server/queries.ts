@@ -38,12 +38,27 @@ export async function insertTodo(title: string, description: string) {
   });
 }
 
-export async function getTodos() {
-  return await db.select().from(todos);
-}
-
 export async function getTodo(todoId: number) {
   return await db.query.todos.findFirst({
     where: (model, { eq }) => eq(model.id, todoId),
   });
+}
+
+export async function deleteTodo(todoId: number) {
+  await db.delete(todos).where(eq(todos.id, todoId));
+}
+
+export async function updateTodo(
+  todoId: number,
+  title: string,
+  description: string
+) {
+  await db
+    .update(todos)
+    .set({ title, description })
+    .where(eq(todos.id, todoId));
+}
+
+export async function getTodos() {
+  return await db.select().from(todos);
 }
