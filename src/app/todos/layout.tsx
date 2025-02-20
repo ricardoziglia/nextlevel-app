@@ -1,41 +1,17 @@
+import { getTodos } from '@/server/queries';
 import ToDoSidebar from '../_components/todo/to-do-sidebar';
 
-export default function ToDoLayout({
+export const metadata = {
+  title: 'My To-Dos',
+  description: 'To-Dos for the next level',
+};
+
+export default async function TodoLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let todos = [
-    {
-      title: 'A todo',
-      id: '',
-    },
-    {
-      title: 'B todo',
-      id: '',
-    },
-    {
-      title: 'C todo',
-      id: '',
-    },
-    {
-      title: 'D todo',
-      id: '',
-    },
-    {
-      title: 'E todo',
-      id: '',
-    },
-  ];
-
-  todos = todos.map((todo) => {
-    return {
-      ...todo,
-      id:
-        Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15),
-    };
-  });
+  const todos = await getTodos();
 
   return (
     <main className="flex gap-8">

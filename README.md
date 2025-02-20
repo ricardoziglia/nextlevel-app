@@ -36,11 +36,11 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## TODOS
-- [] Make it deploy (vercel)
-- [] Scaffold basic ui with mock data
-- [] Tidy up build process
-- [] Actually set up a database (vercel postgres)
-- [] Attach database to UI
+- [x] Make it deploy (vercel)
+- [x] Scaffold basic ui with mock data
+- [x] Tidy up build process
+- [x] Actually set up a database (vercel postgres)
+- [x] Attach database to UI
 - [] Add authentication
 - [] "taint" (server-only)
 - [] Use Next/Image component
