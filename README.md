@@ -37,10 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## TODOS
 - [x] Make it deploy (vercel)
-- [] Scaffold basic ui with mock data
+- [x] Scaffold basic ui with mock data
 - [x] Tidy up build process
 - [x] Actually set up a database (vercel postgres)
-- [] Attach database to UI
+- [x] Attach database to UI
 - [] Add authentication
 - [] "taint" (server-only)
 - [] Use Next/Image component
