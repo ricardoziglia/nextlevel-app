@@ -1,14 +1,10 @@
 import { notFound } from 'next/navigation';
-
 import { getTodo } from '@/server/queries';
 import ToDoForm from '@/app/_components/todo/to-do-form';
+type Params = Promise<{ todoId: string }>;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { todoId: string };
-}) {
-  const { todoId } = params;
+export async function generateMetadata({ params }: { params: Params }) {
+  const { todoId } = await params;
   let todo;
 
   try {
@@ -29,12 +25,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function TodoPage({
-  params,
-}: {
-  params: { todoId: string };
-}) {
-  const { todoId } = params;
+export default async function TodoPage({ params }: { params: Params }) {
+  const { todoId } = await params;
   let todo;
 
   try {
