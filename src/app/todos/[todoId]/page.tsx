@@ -8,7 +8,7 @@ export async function generateMetadata({
 }: {
   params: { todoId: string };
 }) {
-  const { todoId } = await params;
+  const { todoId } = params;
   let todo;
 
   try {
@@ -34,7 +34,7 @@ export default async function TodoPage({
 }: {
   params: { todoId: string };
 }) {
-  const { todoId } = await params;
+  const { todoId } = params;
   let todo;
 
   try {
